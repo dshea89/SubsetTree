@@ -270,16 +270,17 @@ public class SubsetSum {
     System.out.println( );
   }
   
-  public static int factorial( int a ) {
-    int answer = 1; 
-    for( int i = 1; i <= a; ++i) {
-      answer *= i;
-    }
-    return answer; 
-  }
-  
   public static int choose( int n, int k ) {
-    return ( factorial( n ) / ( factorial( k ) * factorial( n - k ) ) );
+    if (k >  n) {
+      return 0;
+    }
+    if (k == 0) {
+      return 1;
+    }
+    if (k > n / 2) {
+      return choose(n, n - k);
+    }
+    return n * choose(n - 1, k - 1) / k;
   }
   
   public static void main(String[] args) {
